@@ -2,7 +2,7 @@
 $(document).ready(function () {
     form = $('#formConversao');
     form.submit(converter);
- 
+
 });
 
 const moedas = [
@@ -49,26 +49,33 @@ const moedas = [
 ];
 
 function converter() {
+    let converter = true;
+    $(".erro").hide();
     var valor = $("#valores").val().replace(',', '.');
+   /* if ($(valor) == "") {
+        let converter = false;
+        $("#inputVazio").show();
+
+    }*/
     var seletor1 = $("#moeda1").val();
     var seletor2 = $("#moeda2").val();
     let arrayErros = $('.erro');
     console.log(arrayErros);
     $(".erro").remove();
-   
-    moedas.forEach(function (item ) {
+
+    moedas.forEach(function (item) {
         var moedaOrigem = item[seletor1];
         if (moedaOrigem) {
             var moedaDestino = moedaOrigem[seletor2];
-            var resultado = (parseFloat(valor) * moedaDestino).toLocaleString( undefined, { style: 'currency', minimumFractionDigits: 2, currency: 'BRL' });
+            var resultado = (parseFloat(valor) * moedaDestino).toLocaleString(undefined, { style: 'currency', minimumFractionDigits: 2, currency: 'BRL' });
             console.log(resultado);
-            var linha = $("<p>").addClass('erro');
+            var linha = $("<p>").addClass('erro'); //
             $(linha).text("Com a conversão o valor é: " + resultado);
             $('#converter').after(linha);
-               
+
         }
     });
-    
+
 
     console.log(seletor1);
     console.log(seletor2);
@@ -77,13 +84,13 @@ function converter() {
     return false;
 }
     /*
-        // passo pra se orientar e ideias (erradas)
-        let valAConv = texto.val();
-        apos verificar as condições imprime num p a resposta. (final)
-        adicionar variavel $("<p>").text("O valor convertido fica em: " adiconar variavel); (final)
-        o que fazer primeiro? Pegar o valor adicionado no seletor de moeda inicial (ok fiz isso)
-        identificado a opção da moeda inicial, selecionar o valor da conversão (não sei se uso um array if)
-    */
+    // passo pra se orientar e ideias (erradas)
+    let valAConv = texto.val();
+    apos verificar as condições imprime num p a resposta. (final)
+    adicionar variavel $("<p>").text("O valor convertido fica em: " adiconar variavel); (final)
+    o que fazer primeiro? Pegar o valor adicionado no seletor de moeda inicial (ok fiz isso)
+    identificado a opção da moeda inicial, selecionar o valor da conversão (não sei se uso um array if)
+*/
 
 
 /*

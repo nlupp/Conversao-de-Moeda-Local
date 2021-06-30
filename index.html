@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -12,6 +13,7 @@
     <form id="formConversao">
         <fieldset> <!--Faazer esse em switch case pq sei o q deve retonar-->
         <label for="texto1">Qual é o valor que você quer converter?</label> <input id="valores" type="text" value="">
+        <!--<p id="inputVazio" class="erro">Você deve colocar o valor que quer converter!</p>-->
         <select id="moeda1" type="select" name="moeda1">
             <option value="BRL">Real</option>
             <option value="EUA">Dolar</option>
@@ -30,7 +32,7 @@
         </select>
         <br> <br>
         <input id="converter" type="submit" name="converter">
-    </fieldset>
+         </fieldset>
     </form>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
