@@ -49,19 +49,22 @@ const moedas = [
 ];
 
 function converter() {
-    var valor = $("#valores").val();
+    var valor = $("#valores").val().replace(',', '.');
     var seletor1 = $("#moeda1").val();
     var seletor2 = $("#moeda2").val();
+    let arrayErros = $('.erro');
+    console.log(arrayErros);
+    $(".erro").remove();
    
-
-
-
     moedas.forEach(function (item ) {
         var moedaOrigem = item[seletor1];
         if (moedaOrigem) {
             var moedaDestino = moedaOrigem[seletor2];
-            var resultado = parseFloat(valor) * moedaDestino;
+            var resultado = (parseFloat(valor) * moedaDestino).toLocaleString( undefined, { style: 'currency', minimumFractionDigits: 2, currency: 'BRL' });
             console.log(resultado);
+            var linha = $("<p>").addClass('erro');
+            $(linha).text("Com a conversão o valor é: " + resultado);
+            $('#converter').after(linha);
                
         }
     });
@@ -69,6 +72,10 @@ function converter() {
 
     console.log(seletor1);
     console.log(seletor2);
+
+
+    return false;
+}
     /*
         // passo pra se orientar e ideias (erradas)
         let valAConv = texto.val();
@@ -78,8 +85,6 @@ function converter() {
         identificado a opção da moeda inicial, selecionar o valor da conversão (não sei se uso um array if)
     */
 
-    return false;
-}
 
 /*
 // o que fazer primeiro? Pegar o valor adicionado no seletor de moeda inicial
