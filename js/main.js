@@ -49,15 +49,8 @@ const moedas = [
 ];
 
 function converter() {
-    let converter = true;
-    $(".erro").hide();
-    var valor = $("#valores").val().replace(',', '.');
-   /* if ($(valor) == "") {
-        let converter = false;
-        $("#inputVazio").show();
-
-    }*/
-    var seletor1 = $("#moeda1").val();
+     var valor = $("#valores").val().replace(',', '.');
+     var seletor1 = $("#moeda1").val();
     var seletor2 = $("#moeda2").val();
     let arrayErros = $('.erro');
     console.log(arrayErros);
